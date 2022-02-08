@@ -2,8 +2,7 @@
 
 ## Download
 
-TODO:
-- Build & Release via Github Actions 
+[Download/下载](https://github.com/PineAG/nvdown/releases/tag/latest)
 
 ## Building
 

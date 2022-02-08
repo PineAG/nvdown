@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: Rust
+=======
+name: Release
+>>>>>>> bddd1857e571fe8417417a672cfc17d0e8dfa01c
 
 on:
   push:
@@ -39,4 +43,8 @@ jobs:
         file_glob: true
         file: target/release/nvdown-*
         tag: latest
+<<<<<<< HEAD
         overwrite: true
+=======
+        overwrite: true
+>>>>>>> bddd1857e571fe8417417a672cfc17d0e8dfa01c
