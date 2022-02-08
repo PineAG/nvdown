@@ -1,5 +1,9 @@
 # NvDown = Novel Downloader
 
+基于Rust的小说下载器。
+
+支持将小说下载为markdown格式，进一步转换请使用pandoc或者calibre。
+
 ## Download
 
 [Download/下载](https://github.com/PineAG/nvdown/releases/tag/latest)
