@@ -1,0 +1,42 @@
+name: Rust
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      matrix: 
+        include:
+          - os: macos-latest
+            target: nvdown
+            release: nvdown-macos
+          - os: windows-latest
+            target: nvdown.exe
+            release: nvdown-win.exe
+          - os: ubuntu-20.04
+            target: nvdown
+            release: nvdown-linux
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cargo build --verbose --release
+    - name: Run tests
+      run: cargo test --verbose
+    - run: cp target/release/${{ matrix.target }} target/release/${{ matrix.release }}
+    
+    - name: Upload files to GitHub release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file_glob: true
+        file: target/release/nvdown-*
+        tag: latest
+        overwrite: true
